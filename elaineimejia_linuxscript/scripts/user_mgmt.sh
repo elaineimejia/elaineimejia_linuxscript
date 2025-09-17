@@ -1,0 +1,17 @@
+#!/bin/bash
+# User management script
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 username"
+  exit 1
+fi
+
+username=$1
+
+# Create user
+sudo useradd -m $username
+
+# Set default password
+echo "$username:Password123" | sudo chpasswd
+
+echo "User $username created and password set."
